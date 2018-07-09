@@ -30,8 +30,12 @@ public class PersonService {
 
     Person updatePerson(Person person) throws Exception {
         Person existingPerson = personRepository.findByUserId(person.getUserId());
-        if(existingPerson.getUserId() == person.getUserId()) {
-            return personRepository.save(person);
+        if(existingPerson.getUserId().equals(person.getUserId())) {
+            if(deletePerson(existingPerson.getUserId()).size() > 0) {
+                return personRepository.save(person);
+            } else {
+                throw new Exception("There was a problem updating the Person");
+            }
         } else {
             throw new Exception("could not find a user with id " + person.getUserId());
         }

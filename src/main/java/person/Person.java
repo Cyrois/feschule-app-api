@@ -2,17 +2,20 @@ package person;
 
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
-public class Person {
+public class Person implements Serializable {
 
     @Id private String id;
 
     private String firstName;
     private String lastName;
-    private Map<String, String> timetable;
+    private List<DailyTimeTable> timeTables;
     private String userId;
-    private Crew crew;
+
+    public Person() {}
 
     public String getFirstName() {
         return firstName;
@@ -38,11 +41,11 @@ public class Person {
         this.userId = userId;
     }
 
-    public Map<String, String> getTimeTable() {
-        return timetable;
+    public List<DailyTimeTable> getTimeTables() {
+        return timeTables;
     }
 
-    public void setTimetable(Map<String, String> timetable) {
-        this.timetable = timetable;
+    public void setTimeTables(List<DailyTimeTable> timeTables) {
+        this.timeTables = timeTables;
     }
 }

@@ -61,4 +61,6 @@ public class PersonController {
 
         return new ResponseEntity<>(personList, HttpStatus.OK);
     }
+
+    //TODO exception handling http://www.canchito-dev.com/public/blog/2017/04/22/build-a-rest-api-with-spring/
 }
